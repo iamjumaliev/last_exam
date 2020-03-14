@@ -13,8 +13,8 @@
     {% endif %}
     <p>First Name: <b>{{ user_obj.first_name }}</b></p>
     <p>Email: {{ user_obj.email }}</p>
+    <h2>Users files</h2>
     {% for file in files %}
-        <h2>Users reviews</h2>
             <div class="col col-3">
                 {% include "partial/partial_card.html" %}
             </div>

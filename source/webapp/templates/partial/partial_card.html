@@ -7,8 +7,9 @@
             <p class="card-text">
                 <a href="{% url 'accounts:user_detail' file.author.pk%}">
                     Добавил: {{ file.author }}
-                </a>{% endblocktrans %}</p>
+                </a>
         {% else %}
+            </p>
             <p class="card-text">{% blocktrans %}Добавил: Анонним {% endblocktrans %}</p>
         {% endif %}
             <p>Был добавлен: {{ file.ceated_at }}</p>

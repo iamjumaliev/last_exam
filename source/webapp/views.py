@@ -27,12 +27,12 @@ class FileCreateView(CreateView):
     template_name = 'file/create.html'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        if self.request.user.is_authenticated:
+            form.instance.author = self.request.user
         return super().form_valid(form)
 
     def get_success_url(self):
-        print('yeds')
-        return reverse('webapp:announce_detail', kwargs={'pk': self.object.pk})
+        return reverse('webapp:file_detail', kwargs={'pk': self.object.pk})
 
 class FileUpdateView(UpdateView):
 
@@ -42,7 +42,7 @@ class FileUpdateView(UpdateView):
     template_name = 'file/update.html'
 
     def get_success_url(self):
-        return reverse('webapp:announce_detail', kwargs={'pk': self.object.pk})
+        return reverse('webapp:file_detail', kwargs={'pk': self.object.pk})
 
 
 
