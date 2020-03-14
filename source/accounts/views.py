@@ -6,12 +6,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.views.generic import DetailView, UpdateView, ListView
 
-from webapp.models import Review
+from webapp.models import File
 from .forms import UserCreationForm, UserChangePasswordForm
 
 
 
-def login_view(request,StatisticsMixin):
+def login_view(request):
     context = {}
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,7 +27,7 @@ def login_view(request,StatisticsMixin):
 
 def logout_view(request):
     logout(request)
-    return redirect('webapp:login')
+    return redirect('webapp:index')
 
 def register_view(request, *args, **kwargs):
     if request.method == 'POST':
@@ -40,6 +40,7 @@ def register_view(request, *args, **kwargs):
         form = UserCreationForm()
     return render(request, 'user_create.html', context={'form': form})
 
+
 class UserDetailView(DetailView):
     model = User
     template_name = 'user_detail.html'
@@ -48,8 +49,8 @@ class UserDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         user = self.object
-        reviews = Review.objects.all().filter(author=user)
-        context['reviews'] = reviews
+        files = File.objects.all().filter(author=user)
+        context['files'] = files
         return context
 
 

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Файлы{% endblock %}
+{% block content %}
+    <h1 class="text-center">Файлы</h1>
+    <div class="row">
+        {% for file in files %}
+            <div class="col col-3">
+                {% include "partial/partial_card.html" %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
