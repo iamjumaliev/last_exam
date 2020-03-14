@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 from django.utils.http import urlencode
-from webapp.forms import FileForm, SimpleSearchForm
+from webapp.forms import FileForm, SimpleSearchForm,AuthFileForm
 from webapp.models import File
 
 
@@ -23,6 +23,7 @@ class FileListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.filter(access='shared')
         if self.search_value:
             queryset = queryset.filter(
                 Q(name__icontains=self.search_value)
@@ -58,9 +59,16 @@ class FileCreateView(CreateView):
     form_class = FileForm
     template_name = 'file/create.html'
 
+    def get_form_class(self):
+        if self.request.user.is_authenticated:
+            return AuthFileForm
+        return FileForm
+
     def form_valid(self, form):
         if self.request.user.is_authenticated:
             form.instance.author = self.request.user
+        if not self.request.user.is_authenticated:
+            form.instance.author = None
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -76,7 +84,6 @@ class FileUpdateView(UpdateView):
     def get_object(self, queryset=None):
         file = File.objects.get(pk=self.kwargs.get('pk'))
         return file
-
 
     def dispatch(self, request, *args, **kwargs):
         file = self.get_object()
