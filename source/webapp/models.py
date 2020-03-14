@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class File(models.Model):
-    file = models.FileField(upload_to='uploads/study_crm/study_crm_homework_issues',null=False,blank=False,
+    file = models.FileField(upload_to='uploads/files',null=False,blank=False,
                                 verbose_name='Задание')
     name = models.CharField(max_length=2500, null=False, blank=False, verbose_name='Описание')
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='file_author',
