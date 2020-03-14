@@ -4,8 +4,16 @@
         <li class="nav-item">
             <a href="{% url 'webapp:file_update' file.pk %}" class="nav-link">Update file</a>
         </li>
+    {% elif request.user == file.author %}
+        <li class="nav-item">
+            <a href="{% url 'webapp:file_update' file.pk %}" class="nav-link">Update file</a>
+        </li>
     {% endif %}
     {% if perms.webapp.delete_file %}
+        <li>
+            <a href="{% url 'webapp:file_delete' file.pk %}" class="nav-link">Delete file</a>
+        </li>
+    {% elif request.user == file.author %}
         <li>
             <a href="{% url 'webapp:file_delete' file.pk %}" class="nav-link">Delete file</a>
         </li>

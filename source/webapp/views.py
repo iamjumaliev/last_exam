@@ -73,9 +73,15 @@ class FileUpdateView(UpdateView):
     context_object_name = 'file'
     template_name = 'file/update.html'
 
+    def get_object(self, queryset=None):
+        file = File.objects.get(pk=self.kwargs.get('pk'))
+        return file
+
+
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user == self.object.author:
-            self.request.user.has_perm('webapp.change_file')
+        file = self.get_object()
+        if self.request.user == file.author:
+            return super().dispatch(request, *args, **kwargs)
         if not request.user.has_perm('webapp.change_file'):
             raise PermissionDenied('403 Forbidden')
         return super().dispatch(request, *args, **kwargs)
@@ -88,10 +94,14 @@ class FileDeleteView(DeleteView):
     template_name = 'file/delete.html'
     success_url = reverse_lazy('webapp:index')
 
+    def get_object(self, queryset=None):
+        file = File.objects.get(pk=self.kwargs.get('pk'))
+        return file
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user == self.object.author:
-            self.request.user.has_perm('webapp.delete_file')
+        file = self.get_object()
+        if self.request.user == file.author:
+            return super().dispatch(request, *args, **kwargs)
         if not request.user.has_perm('webapp.delete_file'):
             raise PermissionDenied('403 Forbidden')
         return super().dispatch(request, *args, **kwargs)
