@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock %}
+{% block content %}
+    <title>Регистрация</title>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+            <form action="{% url 'accounts:create' %}" method="post" class="text-center">
+                {% csrf_token %}
+                {% for error in form.non_field_errors %}
+                    <p class="form-error">{{ error }}</p>
+                {% endfor %}
+                {% for field in form %}
+                    <div class="form-group">
+                    <div>
+                        <label for="{{ field.id_for_label }}" class="registration
+                        {% if field.field.required %}required{% endif %}">{{ field.label }}</label>
+                    </div>
+                        {% if field.errors %}
+                            {{ field }}
+                            {% for error in field.errors %}
+                                <p class="form-error">{{ error }}</p>
+                            {% endfor %}
+                        {% else %}
+                        {{ field }}
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+{% endblock %}
