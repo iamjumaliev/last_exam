@@ -18,4 +18,10 @@ class File(models.Model):
                             null=False,blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
 
+
+class PrivateFile(models.Model):
+    file = models.ForeignKey(File,on_delete=models.PROTECT,related_name='private_file',null=False,blank=False)
+    accesed_user = models.ForeignKey(User,on_delete=models.PROTECT,related_name='private_accessed_user',null=False,
+                                     blank=False)
+
 # Create your models here.

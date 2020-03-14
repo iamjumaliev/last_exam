@@ -25,8 +25,101 @@
     {% else %}
         <h5>Добавил: Аноним</h5>
     {% endif %}
-    <p><a href="{{ file.file.url }}" download >Загрузить файл</a></p>
+    {% if file.access == private or request.user == file.author %}
+        <p><a href="{{ file.file.url }}" download >Загрузить файл</a></p>
+    {% endif %}
     <p>{{ file.name }}</p>
     <p>  Был добавлен:   {{ file.created_at }}</p>
     <p> Доступ: {{ file.access }}</p>
+    {% if file.access == 'private' or file.author == request.user %}
+        {% for user in file.private_file.all %}
+            <div id="add-users">
+                <a href="{% url 'accounts:user_detail' user.accesed_user.pk %}">
+                    {{ user.accesed_user.username }}
+                </a>
+                <a href="" class="btn btn-danger favorites-add" onclick="privateDelete(event, {{ file.pk }},
+                        {{ user.accesed.pk }})">
+                    delete
+                </a>
+            </div>
+        {% endfor %}
+    <div id="div-input">
+        <input type="text" id="input">
+        <a href="" class="btn btn-success favorites-add" onclick="favoritesAdd(event, {{ file.pk }})">Add</a>
+    </div>
+    {% endif %}
+{% endblock %}
+{% block scripts %}
+    <script>
+    function favoritesAdd(event, pk) {
+            event.preventDefault();
+            let block_append = $(`add-users`);
+            console.log('start', pk);
+            let csrftoken = getCookie('csrftoken');
+            let user = $(`#input`).val();
+            let data = {
+                file_id: pk,
+                username: user,
+            };
+            $.ajax({
+                url: '/user/add/private/',
+                method: 'post',
+                data: data,
+                dataType: 'json',
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                success: function (item) {
+                    console.log('ok');
+                    console.log(item);
+                    username = item['username'];
+                    url = `http://localhost:8000/accounts/profile/${item['user_pk']}/`;
+                    console.log(block_append);
+                    block_append.append(`<div><a href= ${url}>${username}</a></div>`)
+
+                }
+            });
+        }
+
+        function privateDelete(event, file_pk,user_pk) {
+            event.preventDefault();
+            console.log('start', file_pk,user_pk);
+            let data = {
+                'user': user_pk,
+                'file': file_pk
+                };
+            let csrftoken = getCookie('csrftoken');
+            $.ajax({
+                url: '/user/delete/private/',
+                method: 'post',
+                data: data,
+                dataType: 'json',
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                success: function (item) {
+                    console.log('ok');
+                }
+            });
+
+        }
+
+
+        function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+    </script>
 {% endblock %}

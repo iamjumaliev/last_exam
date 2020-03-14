@@ -1,10 +1,16 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 from django.utils.http import urlencode
+from django.views.generic.base import View
+
 from webapp.forms import FileForm, SimpleSearchForm,AuthFileForm
-from webapp.models import File
+from webapp.models import File, PrivateFile
 
 
 class FileListView(ListView):
@@ -81,6 +87,11 @@ class FileUpdateView(UpdateView):
     context_object_name = 'file'
     template_name = 'file/update.html'
 
+    def get_form_class(self):
+        if self.request.user.is_authenticated:
+            return AuthFileForm
+        return FileForm
+
     def get_object(self, queryset=None):
         file = File.objects.get(pk=self.kwargs.get('pk'))
         return file
@@ -112,3 +123,31 @@ class FileDeleteView(DeleteView):
         if not request.user.has_perm('webapp.delete_file'):
             raise PermissionDenied('403 Forbidden')
         return super().dispatch(request, *args, **kwargs)
+
+class AddToPrivate(LoginRequiredMixin, View):
+
+    def post(self, request, *args, **kwargs):
+        user = request.POST.get('username')
+        file = request.POST.get('file_id')
+        print(file, user)
+        try:
+            file = File.objects.get(pk=file)
+            real_user = User.objects.get(username=user)
+            private = PrivateFile.objects.get_or_create(accesed_user=real_user, file=file)
+            private = private[0]
+            return JsonResponse({'pk': private.pk, 'user_pk': real_user.pk,'username':real_user.username})
+        except User.DoesNotExist:
+            return JsonResponse({'message': 'user does not exist'})
+
+
+class DeletePrivate(LoginRequiredMixin, View):
+    def post(self,request):
+        user = request.POST.get('user')
+        file = request.POST.get('file')
+        try:
+            file = File.objects.get(pk=file)
+            real_user = User.objects.get(pk=user)
+            PrivateFile.objects.delete(accesed_user=real_user, file=file)
+            return JsonResponse({'user_pk': real_user.pk})
+        except User.DoesNotExist:
+            return JsonResponse({'message': 'user does not exist'})

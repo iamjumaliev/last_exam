@@ -1,0 +1,298 @@
+[
+{
+  "model": "webapp.file",
+  "pk": 1,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg.txt",
+    "name": "\u0438\u0434\u0444\u0438\u0434\u0444",
+    "author": 1,
+    "access": "shared",
+    "created_at": "2020-03-14T04:53:49.478Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 2,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_KJ90gDA.txt",
+    "name": "\u0438\u0434\u0444\u0438\u0434\u0444",
+    "author": 1,
+    "access": "shared",
+    "created_at": "2020-03-14T04:54:55.493Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 3,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_rAoeJAQ.txt",
+    "name": "\u0438\u0434\u0444\u0438\u0434\u0444",
+    "author": 1,
+    "access": "shared",
+    "created_at": "2020-03-14T04:55:12.216Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 4,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_zoURXXi.txt",
+    "name": "\u0438\u0434\u0444\u0438\u0434\u0444",
+    "author": 1,
+    "access": "shared",
+    "created_at": "2020-03-14T05:03:20.366Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 5,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_QqWp0rY.txt",
+    "name": "4aa4wte",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:19:12.711Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 6,
+  "fields": {
+    "file": "uploads/files/Document_1",
+    "name": "aergrsga",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:31:12.465Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 7,
+  "fields": {
+    "file": "uploads/files/Document_1_M8I2Ajc",
+    "name": "reaggrse",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:31:26.624Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 8,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_39M0Ykr.txt",
+    "name": "ergreag",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:31:40.747Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 9,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_mBfvmLq.txt",
+    "name": "reagerg",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:31:48.820Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 10,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_WSx8xVH.txt",
+    "name": "rdsgtet",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:31:59.837Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 11,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_oYjsUB9.txt",
+    "name": "tewhth",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:33:00.761Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 12,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_HWTKSG4.txt",
+    "name": "htrstrh",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:33:09.842Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 13,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_rfL9ROE.txt",
+    "name": "asdsf",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:36:19.507Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 14,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_eQIP7Po.txt",
+    "name": "reawgre",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:36:24.875Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 15,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_Ztj26xJ.txt",
+    "name": "adefae",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:36:30.696Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 16,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_v9oaGUa.txt",
+    "name": "rawgerawg",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:37:22.041Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 17,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_7fBCQp1.txt",
+    "name": "ewgaea",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:37:27.295Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 18,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_71RPqM6.txt",
+    "name": "afedf1",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T05:37:32.761Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 20,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_QmwPwhV.txt",
+    "name": "ewat",
+    "author": 2,
+    "access": "shared",
+    "created_at": "2020-03-14T06:48:16.916Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 21,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_ULkD8eJ.txt",
+    "name": "sdfwEF",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T08:39:22.523Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 23,
+  "fields": {
+    "file": "uploads/files/emir_jumaliev.zip",
+    "name": "egtwrt",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T08:59:02.308Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 25,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_stheDkl.txt",
+    "name": "huyunij",
+    "author": null,
+    "access": "shared",
+    "created_at": "2020-03-14T09:04:37.119Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 26,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_NQAHC9J.txt",
+    "name": "ewthyertye5ra",
+    "author": 2,
+    "access": "secured",
+    "created_at": "2020-03-14T09:05:06.362Z"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 27,
+  "fields": {
+    "file": "uploads/files/0APrague_Colleg_tvnelF9.txt",
+    "name": "dzrhgdf",
+    "author": 1,
+    "access": "private",
+    "created_at": "2020-03-14T11:06:17.019Z"
+  }
+},
+{
+  "model": "webapp.privatefile",
+  "pk": 5,
+  "fields": {
+    "file": 21,
+    "accesed_user": 1
+  }
+},
+{
+  "model": "webapp.privatefile",
+  "pk": 6,
+  "fields": {
+    "file": 20,
+    "accesed_user": 1
+  }
+},
+{
+  "model": "webapp.privatefile",
+  "pk": 7,
+  "fields": {
+    "file": 20,
+    "accesed_user": 2
+  }
+},
+{
+  "model": "webapp.privatefile",
+  "pk": 8,
+  "fields": {
+    "file": 20,
+    "accesed_user": 3
+  }
+}
+]
