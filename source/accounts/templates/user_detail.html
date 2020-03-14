@@ -11,13 +11,19 @@
     {% if user_obj.profile.avatar %}
         <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
     {% endif %}
-    <p>First Name: <b>{{ user_obj.first_name }}</b></p>
-    <p>Email: {{ user_obj.email }}</p>
+    {% if user_obj.first_name %}
+        <p>First Name: <b>{{ user_obj.first_name }}</b></p>
+    {% endif %}
+    {% if user_obj.email %}
+        <p>Email: {{ user_obj.email }}</p>
+    {% endif %}
     <h2>Users files</h2>
+    <div class="row">
     {% for file in files %}
             <div class="col col-3">
                 {% include "partial/partial_card.html" %}
             </div>
         <hr>
     {% endfor %}
+    </div>
 {% endblock %}

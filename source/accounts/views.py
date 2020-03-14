@@ -49,7 +49,7 @@ class UserDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         user = self.object
-        files = File.objects.all().filter(author=user)
+        files = File.objects.all().filter(author=user).order_by('-created_at')
         context['files'] = files
         return context
 

@@ -12,6 +12,7 @@
             </p>
             <p class="card-text">{% blocktrans %}Добавил: Анонним {% endblocktrans %}</p>
         {% endif %}
-            <p>Был добавлен: {{ file.ceated_at }}</p>
+            <p><a href="{{ file.file.url }}" download >Загрузить файл</a></p>
+            <p>Был добавлен: {{ file.created_at }}</p>
     </div>
 </div>
